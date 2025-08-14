@@ -1,0 +1,69 @@
+{
+  "name": "ani-code",
+  "version": "1.0.0",
+  "license": "MIT",
+  "bin": {
+    "ani": "dist/core/cli.js"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=16"
+  },
+  "scripts": {
+    "start": "node --import 'data:text/javascript,import { register } from \"node:module\"; import { pathToFileURL } from \"node:url\"; register(\"ts-node/esm\", pathToFileURL(\"./\"));' src/core/cli.ts",
+    "build": "tsc",
+    "dev": "NODE_OPTIONS='--loader ts-node/esm' nodemon src/core/cli.ts",
+    "test": "prettier --check . && xo && ava"
+  },
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "@types/node-fetch": "^2.6.13",
+    "ajv": "^8.17.1",
+    "chalk": "^5.4.1",
+    "commander": "^14.0.0",
+    "dotenv": "^17.2.1",
+    "ink": "^6.0.1",
+    "meow": "^11.0.0",
+    "node-fetch": "^3.3.2",
+    "react": "^19.1.0",
+    "uri-js": "^4.4.1"
+  },
+  "devDependencies": {
+    "@sindresorhus/tsconfig": "^3.0.1",
+    "@swc/core": "^1.13.3",
+    "@swc/helpers": "^0.5.17",
+    "@types/node": "^24.2.1",
+    "@types/react": "^19.1.8",
+    "@vdemedes/prettier-config": "^2.0.1",
+    "ava": "^5.2.0",
+    "chalk": "^5.2.0",
+    "eslint-config-xo-react": "^0.27.0",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "ink-testing-library": "^3.0.0",
+    "prettier": "^2.8.7",
+    "regenerator-runtime": "^0.14.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2",
+    "xo": "^0.58.0"
+  },
+  "ava": {
+    "extensions": {
+      "ts": "module",
+      "tsx": "module"
+    },
+    "nodeArguments": [
+      "--loader=ts-node/esm"
+    ]
+  },
+  "xo": {
+    "extends": "xo-react",
+    "prettier": true,
+    "rules": {
+      "react/prop-types": "off"
+    }
+  },
+  "prettier": "@vdemedes/prettier-config"
+}

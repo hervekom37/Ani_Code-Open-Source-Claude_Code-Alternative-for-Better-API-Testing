@@ -21,23 +21,23 @@ export class ConfigManager {
     }
   }
 
-  // Sauvegarder la configuration dans le fichier
+  // Save configuration to file
   private saveConfig(): void {
     fs.writeFileSync(CONFIG_FILE, JSON.stringify(this.config, null, 2));
   }
 
-  // Obtenir la clé API
+  // Get API key
   public getApiKey(): string | null {
     return this.config.apiKey || null;
   }
 
-  // Définir la clé API
+  // Set API key
   public setApiKey(key: string): void {
     this.config.apiKey = key;
     this.saveConfig();
   }
 
-  // Supprimer la clé API
+  // Clear API key
   public clearApiKey(): void {
     delete this.config.apiKey;
     this.saveConfig();
@@ -55,12 +55,12 @@ export class ConfigManager {
   }
 
 
-  // Obtenir le modèle par défaut
+  // Get default model
   public getDefaultModel(): string | null {
     return this.config.defaultModel || null;
   }
 
-  // Définir le modèle par défaut
+  // Set default model
   public setDefaultModel(model: string): void {
     this.config.defaultModel = model;
     this.saveConfig();
@@ -78,7 +78,7 @@ export class ConfigManager {
   }
 }
 
-// --- Fonctions utilitaires exportées ---
+// --- Exported utility functions ---
 
 export function getApiKey(): string | null {
   const manager = new ConfigManager();

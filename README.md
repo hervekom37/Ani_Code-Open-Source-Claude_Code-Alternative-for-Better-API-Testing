@@ -87,11 +87,32 @@ npm run build
 npm install -g .    # Installs globally - enables `ani` command anywhere
 ```
 
+#### Running Without Global Installation
+On macOS/Linux:
+```bash
+npm start
+```
+
 #### Windows - PowerShell Install
 ```powershell
 git clone https://github.com/your-repo/ani-cli.git
 cd ani-cli
 .\install.ps1
+```
+
+Alternatively, you can manually install on Windows:
+```powershell
+git clone https://github.com/your-repo/ani-cli.git
+cd ani-cli
+npm install
+npm run build
+npm install -g .    # Installs globally - enables `ani` command anywhere
+```
+
+#### Windows-Specific Usage
+On Windows, you can also run the application directly with:
+```powershell
+npm run start:win
 ```
 
 ### Verify Global Installation
@@ -116,7 +137,11 @@ cd ani-cli
 npm install
 
 # Run in development mode (auto-rebuild on changes)
-npm run dev  
+# For macOS/Linux:
+npm run dev
+
+# For Windows:
+npm run start:win
 
 # For global development installation
 npm run build && npm install -g . --force
@@ -336,6 +361,19 @@ npm install -g . --force
 npm config get prefix
 ```
 
+#### Windows-Specific Issues
+```powershell
+# If you encounter issues with the global command on Windows
+# Try running directly with:
+npm run start:win
+
+# Or check if the PATH includes npm global bin directory
+$env:PATH
+
+# Add npm global bin to PATH if needed
+$env:PATH += ";$(npm config get prefix)\node_modules\.bin"
+```
+
 #### Permission Issues (Linux/macOS)
 ```bash
 # Fix npm permissions (if needed)
@@ -359,13 +397,18 @@ npm install -g . --force
 ### Testing Locally
 ```bash
 # Run this in the background during development to automatically apply any changes to the source code
-npm run dev  
+# For macOS/Linux:
+npm run dev
+
+# For Windows:
+npm run start:win
 ```
 
 ### Available Scripts
 ```bash
 npm run build      # Build TypeScript to dist/
-npm run dev        # Build in watch mode
+npm run dev        # Build in watch mode (macOS/Linux)
+npm run start:win  # Run on Windows
 ```
 
 ### Project Structure
@@ -379,7 +422,9 @@ ani-code/
 │   │   │   ├── help.ts         # Help command
 │   │   │   ├── login.ts        # Authentication command
 │   │   │   ├── model.ts        # Model selection command
-│   │   │   └── reasoning.ts    # Reasoning toggle command
+│   │   │   ├── reasoning.ts    # Reasoning toggle command
+│   │   │   ├── init.ts         # Initialize project context command
+│   │   │   └── context.ts      # Manage context window size command
 │   │   ├── base.ts             # Base command interface
 │   │   └── index.ts            # Command exports
 │   ├── core/               
@@ -479,5 +524,25 @@ Re-run `npm run build` and `npm link` to apply changes.
 Improvements through PRs are welcome!
 
 For issues and feature requests, please open an issue on GitHub.
+
+### Available Commands
+
+#### Slash Commands
+```
+/help           - Show help and available commands
+/login          - Configure your AI provider (OpenRouter, Anthropic, OpenAI)
+/model          - Select AI model to use
+/clear          - Clear chat history and context
+/reasoning      - Toggle display of reasoning content in messages
+/init           - Generate PROJECT_OUTLINE.md to guide Ani Code
+/context        - Manage context window size
+```
+
+#### CLI Commands
+```
+ani generate-tests    - Generate tests for your code
+ani optimize-bundle   - Optimize your bundle size
+ani check-security    - Check for security vulnerabilities
+```
 
 #### Built with powerful AI APIs - share what you create!

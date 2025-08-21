@@ -7,11 +7,11 @@ async function test() {
   try {
     const agent = await Agent.create('openrouter/auto', 0.7);
 
-    // Récupère la clé depuis la variable d'environnement
+    // Get the key from the environment variable
     const apiKey = process.env.OPENROUTER_API_KEY;
 
     if (!apiKey) {
-      throw new Error('La clé API OpenRouter est introuvable dans les variables d’environnement.');
+      throw new Error('OpenRouter API key not found in environment variables.');
     }
 
     agent.saveApiKey(apiKey);

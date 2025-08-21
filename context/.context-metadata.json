@@ -1,0 +1,12 @@
+{
+  "version": "1.0.0",
+  "created": "2025-08-14T14:43:46.729Z",
+  "lastUpdated": "2025-08-14T14:43:46.729Z",
+  "files": [
+    "PROJECT.md",
+    "ARCHITECTURE.md",
+    "DEVELOPMENT.md",
+    "CONVENTIONS.md",
+    "AGENT_MEMORY.md"
+  ]
+}

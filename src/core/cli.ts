@@ -7,7 +7,28 @@ import { Agent } from './agent.js';
 import App from '../ui/App.js';
 import { ANI_ASCII_ART } from '../utils/constants.js';
 
-const program = new Command();
+
+// Import commands
+import { generateTests } from '../commands/generate-tests.js';
+import { optimizeBundle } from '../commands/optimize-bundle.js';
+import { checkSecurity } from '../commands/check-security.js';
+
+// REMOVE this duplicate declaration:
+// const program = new Command(); // ⛔️ DELETE THIS LINE
+
+const program = new Command(); // ✅ Keep only this declaration
+
+interface CommandDefinition {
+  name: string;
+  description: string;
+  execute: (input: string) => Promise<string>;
+}
+
+const commands: CommandDefinition[] = [
+  generateTests,
+  optimizeBundle,
+  checkSecurity
+];
 
 async function startChat(
   temperature: number,
@@ -15,7 +36,7 @@ async function startChat(
   debug?: boolean
 ): Promise<void> {
   console.log(chalk.hex('#FFB6C1')(ANI_ASCII_ART));
-  
+
   console.log(chalk.hex('#FF69B4')(`
  █████╗ ███╗   ██╗██╗     ██████╗ ██████╗ ██████╗ ███████╗
 ██╔══██╗████╗  ██║██║    ██╔════╝██╔═══██╗██╔══██╗██╔════╝
@@ -24,12 +45,10 @@ async function startChat(
 ██║  ██║██║ ╚████║██║    ╚██████╗╚██████╔╝██████╔╝███████╗
 ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝     ╚═════╝ ╚═════╝ ╚═════╝ ╚══════╝
 `));
-    
+
   let defaultModel = 'moonshotai/kimi-k2-instruct';
   try {
-    // Create agent (API key will be checked on first message)
     const agent = await Agent.create(defaultModel, temperature, system, debug);
-
     render(React.createElement(App, { agent }));
   } catch (error) {
     console.log(chalk.red(`Error initializing agent: ${error}`));
@@ -44,12 +63,38 @@ program
   .option('-t, --temperature <temperature>', 'Temperature for generation', parseFloat, 1.0)
   .option('-s, --system <message>', 'Custom system message')
   .option('-d, --debug', 'Enable debug logging to debug-agent.log in current directory')
+  .option('--command <command>', 'Run a specific command with --input')
+  .option('--input <input>', 'Input for the command')
   .action(async (options) => {
-    await startChat(
-      options.temperature,
-      options.system || null,
-      options.debug
-    );
+    const { command, input } = options;
+
+    if (command) {
+      const cmd = commands.find((c: CommandDefinition) => c.name === command);
+
+      if (!cmd) {
+        console.log(chalk.red(`❌ Command "${command}" not found.`));
+        console.log(chalk.green('Available commands:'));
+        commands.forEach((c: CommandDefinition) => 
+          console.log(`- ${c.name}: ${c.description}`)
+        );
+        process.exit(1);
+      }
+
+      try {
+        const result = await cmd.execute(input || '');
+        console.log(chalk.cyanBright(result));
+        process.exit(0);
+      } catch (err) {
+        console.log(chalk.red(`Error executing command: ${err}`));
+        process.exit(1);
+      }
+    } else {
+      await startChat(
+        options.temperature,
+        options.system || null,
+        options.debug
+      );
+    }
   });
 
 program.parse();

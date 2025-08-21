@@ -145,12 +145,12 @@ export default function Chat({ agent }: ChatProps) {
     });
   };
 
-  // Pour ouvrir le sélecteur, tu dois appeler setShowModelSelector avec la config nécessaire
-  // Exemple d’ouverture (tu peux adapter selon ton contexte) :
+  // To open the selector, you need to call setShowModelSelector with the necessary config
+  // Opening example (you can adapt according to your context):
   // setShowModelSelector({ models: ['openrouter/auto', 'openai/gpt-4'], provider: 'openrouter', defaultModel: 'openrouter/auto' });
 
   const handleModelSelect = (model: string) => {
-    setShowModelSelector(null); // Fermer le sélecteur après choix
+    setShowModelSelector(null); // Close the selector after selection
     clearHistory();
     agent.setModel(model);
     addMessage({
@@ -208,7 +208,7 @@ export default function Chat({ agent }: ChatProps) {
             onSubmit={handleModelSelect}
             onCancel={handleModelCancel}
             currentModel={agent.getCurrentModel?.() || undefined}
-            config={showModelSelector}  // Tu peux passer cette config à ton composant
+            config={showModelSelector}  // You can pass this config to your component
           />
         ) : showInput ? (
           <MessageInput

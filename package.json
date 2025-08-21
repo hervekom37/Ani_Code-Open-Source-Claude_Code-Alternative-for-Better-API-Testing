@@ -10,9 +10,10 @@
     "node": ">=16"
   },
   "scripts": {
-    "start": "node --import 'data:text/javascript,import { register } from \"node:module\"; import { pathToFileURL } from \"node:url\"; register(\"ts-node/esm\", pathToFileURL(\"./\"));' src/core/cli.ts",
+    "start": "ts-node --esm src/core/cli.ts",
+    "start:win": "set NODE_OPTIONS=--loader ts-node/esm && node src/core/cli.ts",
     "build": "tsc",
-    "dev": "NODE_OPTIONS='--loader ts-node/esm' nodemon src/core/cli.ts",
+    "dev": "set NODE_OPTIONS=--loader ts-node/esm && nodemon src/core/cli.ts",
     "test": "prettier --check . && xo && ava"
   },
   "files": [

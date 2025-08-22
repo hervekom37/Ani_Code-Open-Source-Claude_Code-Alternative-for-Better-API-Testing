@@ -64,8 +64,8 @@ Install Ani Code globally to use the `ani` command from anywhere on your system:
 #### macOS/Linux - Quick Install
 ```bash
 # Clone and setup automatically
-git clone https://github.com/your-repo/ani-cli.git
-cd ani-cli
+git clone https://github.com/your-repo/ani-code.git
+cd ani-code
 chmod +x install.sh
 ./install.sh
 ```
@@ -75,13 +75,13 @@ This script will:
 - Install dependencies
 - Build the project
 - Install globally with `npm install -g .`
-- Set up the global `ani` command for "Ani Code is Coding"
-- Configure global settings in `~/.ani-cli-config.json`
+- Set up the global `ani` command for Ani Code
+- Configure global settings in `~/.ani-code-config.json`
 
 #### macOS/Linux - Manual Global Install
 ```bash
-git clone https://github.com/your-repo/ani-cli.git
-cd ani-cli
+git clone https://github.com/your-repo/ani-code.git
+cd ani-code
 npm install
 npm run build
 npm install -g .    # Installs globally - enables `ani` command anywhere
@@ -95,15 +95,15 @@ npm start
 
 #### Windows - PowerShell Install
 ```powershell
-git clone https://github.com/your-repo/ani-cli.git
-cd ani-cli
+git clone https://github.com/your-repo/ani-code.git
+cd ani-code
 .\install.ps1
 ```
 
 Alternatively, you can manually install on Windows:
 ```powershell
-git clone https://github.com/your-repo/ani-cli.git
-cd ani-cli
+git clone https://github.com/your-repo/ani-code.git
+cd ani-code
 npm install
 npm run build
 npm install -g .    # Installs globally - enables `ani` command anywhere
@@ -130,18 +130,21 @@ ani
 For contributors and developers:
 ```bash
 # Clone the repository
-git clone https://github.com/your-repo/ani-cli.git
-cd ani-cli
+git clone https://github.com/your-repo/ani-code.git
+cd ani-code
 
 # Install dependencies
 npm install
 
-# Run in development mode (auto-rebuild on changes)
-# For macOS/Linux:
-npm run dev
+# Run locally
+# macOS/Linux:
+npm start
 
-# For Windows:
+# Windows:
 npm run start:win
+
+# Optional watch mode (Windows only):
+npm run dev
 
 # For global development installation
 npm run build && npm install -g . --force
@@ -204,6 +207,8 @@ Options:
   -t, --temperature <temp>      Temperature for generation (default: 1)
   -s, --system <message>        Custom system message
   -d, --debug                   Enable debug logging to debug-agent.log in current directory
+  --command <command>           Run a specific command (generate-tests | optimize-bundle | check-security)
+  --input <input>               Input string for the command
   -h, --help                    Display help
   -V, --version                 Display version number
 ```
@@ -248,7 +253,7 @@ Get your API key from your preferred AI provider:
 
 #### Global Configuration
 When installed globally, Ani stores your configuration in:
-- **Config file**: `~/.ani-cli-config.json` (API key, default model)
+- **Config file**: `~/.ani-code-config.json` (API key, default model)
 - **Local override**: You can also set environment variables per project:
 
 ```bash
@@ -281,7 +286,7 @@ Ani Code supports multiple AI providers. Use `/login` to configure:
 - `gpt-4-turbo`, `gpt-3.5-turbo`
 
 ### macOS-Specific Notes
-- Ani Code is Coding works natively on macOS with no additional setup required
+- Ani Code works natively on macOS with no additional setup required
 - Uses standard Unix permissions and paths
 - Compatible with both Intel and Apple Silicon Macs
 - Supports all standard macOS terminal applications (Terminal, iTerm2, etc.)
@@ -350,10 +355,10 @@ If `ani` command is not found after global installation:
 
 ```bash
 # Check if globally installed
-npm list -g ani-code-is-coding
+npm list -g ani-code
 
 # Reinstall globally
-cd /path/to/ani-cli
+cd /path/to/ani-code
 npm run build
 npm install -g . --force
 
@@ -384,8 +389,8 @@ sudo chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}
 
 #### Multiple Installations
 ```bash
-# Remove all global ani packages
-npm uninstall -g ani-code-is-coding ani-code ani
+# Remove global ani package
+npm uninstall -g ani-code
 
 # Clean reinstall
 npm install -g . --force
@@ -397,18 +402,19 @@ npm install -g . --force
 ### Testing Locally
 ```bash
 # Run this in the background during development to automatically apply any changes to the source code
-# For macOS/Linux:
-npm run dev
+# macOS/Linux:
+npm start
 
-# For Windows:
+# Windows:
 npm run start:win
 ```
 
 ### Available Scripts
 ```bash
-npm run build      # Build TypeScript to dist/
-npm run dev        # Build in watch mode (macOS/Linux)
-npm run start:win  # Run on Windows
+npm start         # Run locally (macOS/Linux)
+npm run start:win # Run on Windows
+npm run dev       # Watch mode (Windows only)
+npm run build     # Build TypeScript to dist/
 ```
 
 ### Project Structure
@@ -416,6 +422,13 @@ npm run start:win  # Run on Windows
 ```
 ani-code/
 ├── src/
+│   ├── agents/                 # Specialized AI agents
+│   │   ├── backend-developer.ts   # Backend development agent
+│   │   ├── bundle-optimizer.ts    # Bundle optimization agent
+│   │   ├── frontend-developer.ts  # Frontend development agent
+│   │   ├── generate-tests.ts      # Test generation agent
+│   │   ├── react-optimizer.ts     # React optimization agent
+│   │   └── security-auditor.ts    # Security audit agent
 │   ├── commands/           
 │   │   ├── definitions/        # Individual command implementations
 │   │   │   ├── clear.ts        # Clear chat history command
@@ -426,14 +439,20 @@ ani-code/
 │   │   │   ├── init.ts         # Initialize project context command
 │   │   │   └── context.ts      # Manage context window size command
 │   │   ├── base.ts             # Base command interface
+│   │   ├── check-security.ts   # Security check CLI command
+│   │   ├── generate-tests.ts   # Test generation CLI command
+│   │   ├── optimize-bundle.ts  # Bundle optimization CLI command
 │   │   └── index.ts            # Command exports
 │   ├── core/               
 │   │   ├── agent.ts            # AI agent implementation
-│   │   └── cli.ts              # CLI entry point and setup
+│   │   ├── cli.ts              # CLI entry point and setup
+│   │   └── test-agent.ts       # Test agent utilities
 │   ├── tools/              
 │   │   ├── tool-schemas.ts     # Tool schema definitions
 │   │   ├── tools.ts            # Tool implementations
 │   │   └── validators.ts       # Input validation utilities
+│   ├── types/
+│   │   └── commands.d.ts       # Command type definitions
 │   ├── ui/                 
 │   │   ├── App.tsx             # Main application component
 │   │   ├── components/     
@@ -443,10 +462,19 @@ ani-code/
 │   │   └── hooks/          
 │   └── utils/              
 │       ├── constants.ts        # Application constants
+│       ├── env.ts              # Environment configuration
 │       ├── file-ops.ts         # File system operations
 │       ├── local-settings.ts   # Local configuration management
-│       └── markdown.ts         # Markdown processing utilities
-├── docs/                   
+│       ├── markdown.ts         # Markdown processing utilities
+│       └── openai-models.ts    # OpenAI model utilities
+├── context/                    # Context engineering files
+│   ├── .context-metadata.json  # Context metadata
+│   ├── AGENT_MEMORY.md         # Agent memory documentation
+│   ├── ARCHITECTURE.md         # Architecture documentation
+│   ├── CONVENTIONS.md          # Coding conventions
+│   ├── DEVELOPMENT.md          # Development guidelines
+│   └── PROJECT.md              # Project overview
+├── test-project/               # Test project for development
 ├── package.json    
 ├── tsconfig.json        
 └── LICENSE          
@@ -538,11 +566,11 @@ For issues and feature requests, please open an issue on GitHub.
 /context        - Manage context window size
 ```
 
-#### CLI Commands
+#### CLI Commands (non-interactive)
 ```
-ani generate-tests    - Generate tests for your code
-ani optimize-bundle   - Optimize your bundle size
-ani check-security    - Check for security vulnerabilities
+ani --command generate-tests --input "<description or path>"    # Generate tests
+ani --command optimize-bundle --input "<description or path>"   # Optimize bundle size
+ani --command check-security --input "<description or path>"    # Security audit
 ```
 
 #### Built with powerful AI APIs - share what you create!

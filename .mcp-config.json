@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "apidog": {
+      "command": "npx",
+      "args": ["apidog-mcp-server"],
+      "env": {
+        "APIDOG_ACCESS_TOKEN": "${APIDOG_ACCESS_TOKEN}",
+        "APIDOG_PROJECT_ID": "${APIDOG_PROJECT_ID}"
+      }
+    }
+  }
+}

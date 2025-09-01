@@ -15,7 +15,7 @@ export default function SlashCommandSuggestions({
   const searchTerm = input.slice(1).toLowerCase();
   const allCommands = getAvailableCommands();
   const filteredCommands = allCommands.filter(cmd => 
-    cmd.command.toLowerCase().includes(searchTerm)
+    cmd.name.toLowerCase().includes(searchTerm)
   );
 
   if (filteredCommands.length === 0) {
@@ -25,12 +25,12 @@ export default function SlashCommandSuggestions({
   return (
     <Box flexDirection="column" marginLeft={2}>
       {filteredCommands.map((cmd, index) => (
-        <Box key={cmd.command}>
+        <Box key={cmd.name}>
           <Text 
             color={index === selectedIndex ? "black" : "white"}
             backgroundColor={index === selectedIndex ? "cyan" : undefined}
           >
-            /{cmd.command} - {cmd.description}
+            /{cmd.name} - {cmd.description}
           </Text>
         </Box>
       ))}

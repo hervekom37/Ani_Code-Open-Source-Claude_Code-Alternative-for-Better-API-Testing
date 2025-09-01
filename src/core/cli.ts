@@ -9,9 +9,10 @@ import { ANI_ASCII_ART } from '../utils/constants.js';
 
 
 // Import commands
-import { generateTests } from '../commands/generate-tests.js';
 import { optimizeBundle } from '../commands/optimize-bundle.js';
 import { checkSecurity } from '../commands/check-security.js';
+import { createApidogCommand } from '../commands/apidog.js';
+import { getAvailableCommands } from '../commands/index.js';
 
 // REMOVE this duplicate declaration:
 // const program = new Command(); // ⛔️ DELETE THIS LINE
@@ -24,11 +25,30 @@ interface CommandDefinition {
   execute: (input: string) => Promise<string>;
 }
 
-const commands: CommandDefinition[] = [
-  generateTests,
-  optimizeBundle,
-  checkSecurity
-];
+const commands: CommandDefinition[] = getAvailableCommands().map(cmd => ({
+  name: cmd.name,
+  description: cmd.description,
+  execute: async (input: string) => {
+    return new Promise((resolve) => {
+      let result = '';
+      const mockContext = {
+        addMessage: (message: any) => {
+          result += message.content + '\n';
+        },
+        clearHistory: () => {},
+        setShowLogin: () => {},
+        getConfig: () => ({}),
+        updateConfig: () => {}
+      };
+      
+      cmd.handler(mockContext, input.split(' '));
+      
+      setTimeout(() => {
+        resolve(result.trim() || `✅ Command ${cmd.name} executed successfully`);
+      }, 100);
+    });
+  }
+}));
 
 async function startChat(
   temperature: number,
@@ -58,13 +78,14 @@ async function startChat(
 
 program
   .name('ani')
-  .description('Ani Code - AI-powered coding assistant')
+  .description('Ani Code - AI-powered coding assistant with API documentation support')
   .version('1.0.0')
   .option('-t, --temperature <temperature>', 'Temperature for generation', parseFloat, 1.0)
   .option('-s, --system <message>', 'Custom system message')
   .option('-d, --debug', 'Enable debug logging to debug-agent.log in current directory')
   .option('--command <command>', 'Run a specific command with --input')
   .option('--input <input>', 'Input for the command')
+  .addCommand(createApidogCommand())
   .action(async (options) => {
     const { command, input } = options;
 
@@ -77,6 +98,9 @@ program
         commands.forEach((c: CommandDefinition) => 
           console.log(`- ${c.name}: ${c.description}`)
         );
+        console.log(chalk.green('API Documentation Commands:'));
+        console.log(`- apidog: Interact with API documentation through Apidog MCP Server`);
+        console.log(`  Use: ani apidog --help for detailed usage`);
         process.exit(1);
       }
 

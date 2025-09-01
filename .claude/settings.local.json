@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node:*)",
+      "Bash(npm run build:*)",
+      "Bash(rm:*)",
+      "WebFetch(domain:openrouter.ai)",
+      "Bash(mkdir:*)",
+      "Bash(npm link:*)",
+      "Bash(ani:*)",
+      "Bash(chmod:*)",
+      "Bash(./install.sh)",
+      "Bash(npm install:*)",
+      "Bash(ls:*)",
+      "Bash(npm start)"
+    ],
+    "deny": []
+  }
+}

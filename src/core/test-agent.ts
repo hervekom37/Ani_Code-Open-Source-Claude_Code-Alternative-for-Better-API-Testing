@@ -1,7 +1,7 @@
 import { Agent } from './agent.js';
 import dotenv from 'dotenv';
 
-dotenv.config(); // Charge le fichier .env
+dotenv.config(); // Load .env file
 
 async function test() {
   try {

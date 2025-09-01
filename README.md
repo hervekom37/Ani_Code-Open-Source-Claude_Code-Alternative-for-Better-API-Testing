@@ -1,576 +1,263 @@
-<h2 align="center"> <br> <h1>Ani Code</h1> <br> <br> Ani Code: The ONLY coding assistant with automatic persistent context. Your AI remembers everything about YOUR codebase. <br> <br> 🧠 Automatic Context • 🚀 Lightweight • 🛠️ Customizable • 📖 Open Source <br> </h2> <p align="center"> <img src="https://img.shields.io/badge/License-MIT-green.svg"> <img src="https://img.shields.io/badge/Platform-macOS%20%7C%20Linux%20%7C%20Windows-blue.svg"> <img src="https://img.shields.io/badge/Node.js-%3E%3D16-green.svg"> </p> <p align="center"> <a href="#overview">Overview</a> • <a href="#installation">Installation</a> • <a href="#usage">Usage</a> • <a href="#development">Development</a> </p> <br>
+# 🚀 Ani Code - The Ultimate AI Coding Assistant
 
-# Overview
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![TypeScript](https://img.shields.io/badge/TypeScript-4.9+-blue.svg)](https://www.typescriptlang.org/)
+[![Node.js](https://img.shields.io/badge/Node.js-16+-green.svg)](https://nodejs.org/)
+[![npm](https://img.shields.io/badge/npm-compatible-red.svg)](https://www.npmjs.com/)
 
-## 🧠 Automatic Context Engineering - The Game Changer
+> **The coding assistant that thinks like you** - Ani Code is a comprehensive AI assistant that transforms the way you code with automated testing, security analysis, and intelligent integration.
 
-**Ani Code is the ONLY coding assistant that automatically maintains persistent project context.** Every project you work on gets its own `/context` folder that tracks:
+## ✨ Why Ani Code?
 
-- **Project Overview & Architecture** - Understands your codebase structure
-- **Code Conventions & Patterns** - Learns and follows your coding style
-- **Agent Memory** - Remembers discoveries, gotchas, and solutions
-- **Development Guidelines** - Maintains project-specific knowledge
+- **🤖 Smart AI** - Multiple specialized AI agents (Backend, Frontend, Security)
+- **🧪 Automated Tests** - Intelligent test generation and execution
+- **🔒 Integrated Security** - Automatic vulnerability scans
+- **📊 TypeScript Migration** - JS → TS conversion in one click
+- **🎨 Modern Interface** - Elegant and intuitive TUI
+- **🔄 CI/CD Ready** - Full GitHub Actions integration
 
-This context is:
-- ✅ **Created automatically** - No manual setup required
-- ✅ **Persistently stored** - Knowledge survives between sessions
-- ✅ **Continuously updated** - Learns as it works on your project
-- ✅ **Immediately loaded** - Every session starts with full project awareness
+## 🎯 Quick Installation
 
-**Result: An AI that truly understands YOUR codebase, not just generic coding patterns.**
-
-## Why Ani Code?
-
-Coding CLIs are everywhere. Ani Code is different. It is a blueprint, a building block, for developers looking to leverage, customize, and extend a CLI to be entirely their own. Leading open-source CLIs are all fantastic, inspiring for the open-source community, and hugely rich in features. However, that's just it: they are *gigantic*. Feature-rich: yes, but local development with such a large and interwoven codebase is unfriendly and overwhelming. **This is a project for developers looking to dive in.**
-
-Ani Code is your chance to make a CLI truly your own. Equipped with all of the features, tools, commands, and UI/UX that's familiar to your current favorite CLI, we make it simple to add new features you've always wanted. By massively cutting down on bloat and code mass without compromising on quality, you can jump into modifying this CLI however you see fit. By leveraging powerful AI models, you can iterate even faster (`/model` to see available models). Simply activate the CLI by typing `ani` in your terminal. Use Ani Code in any directory just like you would with any other coding CLI. Use it in this directory to have it build and customize itself!
-
-## Key Features
-
-### 🧠 Automatic Context Engineering (Unique to Ani Code!)
-- **Automatic `/context` folder** creation and maintenance
-- **Persistent project memory** across all sessions
-- **Continuous learning** about your codebase
-- **Smart context loading** for instant project awareness
-
-### 🛠️ Full-Featured Coding Assistant
-- **Multi-provider support**: OpenRouter (100+ models), Anthropic (Claude), OpenAI
-- **Complete file operations**: Create, edit, delete, search
-- **Command execution** - Always auto-approved in YOLO mode
-- **Project initialization** for various frameworks
-- **Intelligent code understanding** and generation
-
-### 🎨 Customization-First Design
-- Clean, modular codebase designed for hacking
-- Easy to add new slash commands (e.g. /mcp, /deadcode, /complexity)
-- Simple tool additions (web search, merge conflicts, knowledge graphs)
-- Customizable UI/UX and behaviors
-- Your imagination is the limit!
-
-### 🚀 Developer Experience
-- **🚀 YOLO mode always ON** - No approval prompts, pure speed
-- **Project outline generation** with `/init`
-- **Model switching** on the fly
-- **Clean, intuitive terminal UI**
-- **Direct Anthropic API support** via console.anthropic.com
-
-
-## Installation
-
-### Global Installation (Recommended)
-
-Install Ani Code globally to use the `ani` command from anywhere on your system:
-
-#### macOS/Linux - Quick Install
+### Via npm (recommended)
 ```bash
-# Clone and setup automatically
-git clone https://github.com/your-repo/ani-code.git
-cd ani-code
+npm install -g ani-code
+ani --help
+```
+
+### Via Git
+```bash
+git clone https://github.com/hervekom37/Ani_Code.git
+cd Ani_Code
+```
+
+#### Automated Installation (Recommended)
+**Windows:**
+```powershell
+.\install.ps1
+```
+
+**Linux/macOS:**
+```bash
 chmod +x install.sh
 ./install.sh
 ```
 
-This script will:
-- Check Node.js version (requires >=16)
-- Install dependencies
-- Build the project
-- Install globally with `npm install -g .`
-- Set up the global `ani` command for Ani Code
-- Configure global settings in `~/.ani-code-config.json`
-
-#### macOS/Linux - Manual Global Install
+#### Manual Installation
 ```bash
-git clone https://github.com/your-repo/ani-code.git
-cd ani-code
 npm install
 npm run build
-npm install -g .    # Installs globally - enables `ani` command anywhere
+npm link
 ```
 
-#### Running Without Global Installation
-On macOS/Linux:
+## 🚀 Get Started in 30 seconds
+
 ```bash
-npm start
+# 1. Initialize your project
+ani init
+
+# 2. Add E2E tests
+ani add-playwright
+
+# 3. Scan for vulnerabilities
+ani bug-scan
+
+# 4. Generate CI/CD tests
+ani generate-tests --ci --e2e --playwright
 ```
 
-#### Windows - PowerShell Install
-```powershell
-git clone https://github.com/your-repo/ani-code.git
-cd ani-code
-.\install.ps1
-```
+## 🛠️ Essential Commands
 
-Alternatively, you can manually install on Windows:
-```powershell
-git clone https://github.com/your-repo/ani-code.git
-cd ani-code
-npm install
-npm run build
-npm install -g .    # Installs globally - enables `ani` command anywhere
-```
+| Command | Description | Usage |
+|----------|-------------|--------|
+| `ani` | Interactive interface | `ani` |
+| `ani add-playwright` | Add Playwright E2E | `ani add-playwright` |
+| `ani bug-scan` | Scan for bugs & security | `ani bug-scan --pr` |
+| `ani run-tests` | Run all tests | `ani run-tests` |
+| `ani generate-tests` | Generate tests + CI/CD | `ani generate-tests --ci --e2e` |
+| `ani migrate-ts` | Migrate to TypeScript | `ani migrate-ts` |
+| `ani bg-agent` | Automation agent | `ani bg-agent --watch` |
 
-#### Windows-Specific Usage
-On Windows, you can also run the application directly with:
-```powershell
-npm run start:win
-```
+## 🎮 Interactive Interface
 
-### Verify Global Installation
 ```bash
-# Test from any directory
-cd ~
-ani --version
-
-# Start Ani from any project directory
-cd /path/to/your/project
 ani
 ```
 
-### Development Mode
-For contributors and developers:
+**Available slash commands:**
+- `/help` - Full help
+- `/login` - AI provider login
+- `/model` - Choose AI model
+- `/clear` - Clear history
+- `/context` - Manage project context
+
+## 🧪 Complete QA System
+
+### 1. **Automated tests**
 ```bash
-# Clone the repository
-git clone https://github.com/your-repo/ani-code.git
-cd ani-code
+# Unit tests
+ani run-tests unit
 
-# Install dependencies
-npm install
+# E2E tests
+ani run-tests e2e
 
-# Run locally
-# macOS/Linux:
-npm start
-
-# Windows:
-npm run start:win
-
-# Optional watch mode (Windows only):
-npm run dev
-
-# For global development installation
-npm run build && npm install -g . --force
+# Playwright tests
+ani run-tests playwright
 ```
 
-## 🧠 How Automatic Context Works
-
-When you run `ani` in any project directory, it automatically:
-
-1. **Creates a `/context` folder** (if it doesn't exist) containing:
-   - `PROJECT.md` - Project overview and mission
-   - `ARCHITECTURE.md` - System design and component structure
-   - `DEVELOPMENT.md` - Setup instructions and workflows
-   - `CONVENTIONS.md` - Coding standards and patterns
-   - `AGENT_MEMORY.md` - AI discoveries and learnings
-
-2. **Loads all context** into memory at startup
-
-3. **Continuously updates** the context as it works:
-   - Records file locations and code patterns
-   - Remembers solutions to problems
-   - Tracks dependencies and integrations
-   - Updates architecture understanding
-
-4. **Persists knowledge** between sessions - every conversation builds on previous learnings
-
-### Example Context Flow
-
+### 2. **Security analysis**
 ```bash
-# First time in a project
-cd my-awesome-project
-ani
-# → Automatically creates /context folder
-# → Analyzes your codebase
-# → Ready with full project understanding
+# Local scan
+ani bug-scan
 
-# Next session
-ani
-# → Loads existing context instantly
-# → Remembers everything from before
-# → Continues where it left off
+# PR scan (CI/CD)
+ani bug-scan --pr
 ```
 
-Your AI assistant now has perfect memory of YOUR specific project!
-
-## Usage
-
-### macOS Quick Start
+### 3. **Intelligent generation**
 ```bash
-# Start chat session (after installation)
-ani
+# Tests + CI/CD complet
+ani generate-tests --ci --e2e --playwright
+
+# Migration TypeScript
+ani migrate-ts
 ```
 
-### Command Line Options
+## 🔄 CI/CD Integration
 
+The system automatically generates:
+- ✅ **GitHub Actions** workflow
+- 📊 **Coverage reports**
+- 🔍 **Security audits**
+- 🧪 **Multi-node testing**
+- 📦 **Artifact uploads**
+
+## 🎨 Customization
+
+### AI Providers Configuration
 ```bash
-ani [options]
+# OpenRouter (recommended)
+ani login
+# → Select OpenRouter
 
-Options:
-  -t, --temperature <temp>      Temperature for generation (default: 1)
-  -s, --system <message>        Custom system message
-  -d, --debug                   Enable debug logging to debug-agent.log in current directory
-  --command <command>           Run a specific command (generate-tests | optimize-bundle | check-security)
-  --input <input>               Input string for the command
-  -h, --help                    Display help
-  -V, --version                 Display version number
-```
-
-### Authentication
-
-Configure your AI provider using the `/login` command:
-
-1. **OpenRouter** (default):
-   - Get API key from [openrouter.ai](https://openrouter.ai/)
-   - Access to 100+ models
-
-2. **Anthropic** (Claude):
-   - Get API key from [console.anthropic.com](https://console.anthropic.com/)
-   - Direct access to Claude models
-
-3. **OpenAI**:
-   - Get API key from [platform.openai.com](https://platform.openai.com/)
-   - Access to GPT models
-
-You can also set API keys via environment variables:
-```bash
+# Or manual configuration
 export OPENROUTER_API_KEY="your-key"
 export ANTHROPIC_API_KEY="your-key"
 export OPENAI_API_KEY="your-key"
 ```
 
-#### First-Time Setup
-On first use, start Ani from any directory:
-
-```bash
-ani
+### Adding New Tools
+```typescript
+// src/tools/tool-schemas.ts
+export const MY_TOOL_SCHEMA = {
+  type: 'function',
+  function: {
+    name: 'my_tool',
+    description: 'Clear description',
+    parameters: { /* ... */ }
+  }
+};
 ```
 
-And type the `/login` command to enter your API key.
-
-#### Supported AI Providers
-Get your API key from your preferred AI provider:
-- **OpenRouter** (recommended): [openrouter.ai](https://openrouter.ai) - Access to multiple models
-- **OpenAI**: [platform.openai.com](https://platform.openai.com)
-- **Anthropic**: [console.anthropic.com](https://console.anthropic.com)
-
-#### Global Configuration
-When installed globally, Ani stores your configuration in:
-- **Config file**: `~/.ani-code-config.json` (API key, default model)
-- **Local override**: You can also set environment variables per project:
-
-```bash
-# Set API key for current session
-export OPENROUTER_API_KEY=your_api_key_here
-
-# Start Ani (will use environment variable if set)
-ani
-```
-
-#### AI Provider Support
-
-Ani Code supports multiple AI providers. Use `/login` to configure:
-
-**OpenRouter (Default)**
-- Access to 100+ models including:
-  - `anthropic/claude-3.5-sonnet`
-  - `google/gemini-2.5-pro`
-  - `openai/gpt-4-turbo`
-  - `moonshotai/kimi-k2`
-  - And many more...
-
-**Ani AI**
-- Connect to custom AI apps built on Ani.ai
-- Requires API key and App ID
-- Perfect for specialized chatbots and workflows
-
-**OpenAI**
-- Direct access to GPT models
-- `gpt-4-turbo`, `gpt-3.5-turbo`
-
-### macOS-Specific Notes
-- Ani Code works natively on macOS with no additional setup required
-- Uses standard Unix permissions and paths
-- Compatible with both Intel and Apple Silicon Macs
-- Supports all standard macOS terminal applications (Terminal, iTerm2, etc.)
-
-### Available Commands
-- `/help` - Show help and available commands
-- `/login` - Login with your AI API credentials
-- `/model` - Select your preferred AI model
-- `/clear` - Clear chat history and context
-- `/reasoning` - Toggle display of reasoning content in messages
-- `/context` - Initialize or manage project context documentation
-
-### Context Engineering
-
-Ani Code follows **Context Engineering** best practices to help AI assistants better understand your projects. This powerful feature automatically:
-
-1. **Detects Project Context**: On first interaction, Ani Code checks for a `/context` folder in your project
-2. **Suggests Documentation**: If no context exists, it prompts you to create structured documentation
-3. **Maintains Project Memory**: Updates context files as it learns about your codebase
-
-#### Why Context Engineering Matters
-
-- **10x Cost Reduction**: Proper context caching reduces API costs dramatically
-- **Faster Responses**: Well-structured context improves response time by 50-70%
-- **Better Accuracy**: Clear context reduces errors and hallucinations by up to 80%
-- **Project Understanding**: AI maintains deep knowledge of your codebase architecture
-
-#### How to Use Context Engineering
-
-```bash
-# Initialize context for any project
-ani
-> Initialize context for this project
-
-# Check context health
-ani
-> Check context health
-
-# Analyze and update context
-ani
-> Analyze the project and update context
-```
-
-#### Context Folder Structure
-
-When initialized, Ani Code creates:
-
-```
-your-project/
-├── context/                     # All AI-relevant documentation
-│   ├── PROJECT.md              # Project overview and goals
-│   ├── ARCHITECTURE.md         # System design and structure
-│   ├── DEVELOPMENT.md          # Setup and development guide
-│   ├── CONVENTIONS.md          # Code style and patterns
-│   ├── AGENT_MEMORY.md         # AI's learnings about your project
-│   └── .context-metadata.json  # Context versioning
-└── src/
-```
-
-For more details, see [CONTEXT_ENGINEERING_BEST_PRACTICES.md](./CONTEXT_ENGINEERING_BEST_PRACTICES.md).
-
-### Troubleshooting Global Installation
-
-#### Command Not Found
-If `ani` command is not found after global installation:
-
-```bash
-# Check if globally installed
-npm list -g ani-code
-
-# Reinstall globally
-cd /path/to/ani-code
-npm run build
-npm install -g . --force
-
-# Check npm global bin path
-npm config get prefix
-```
-
-#### Windows-Specific Issues
-```powershell
-# If you encounter issues with the global command on Windows
-# Try running directly with:
-npm run start:win
-
-# Or check if the PATH includes npm global bin directory
-$env:PATH
-
-# Add npm global bin to PATH if needed
-$env:PATH += ";$(npm config get prefix)\node_modules\.bin"
-```
-
-#### Permission Issues (Linux/macOS)
-```bash
-# Fix npm permissions (if needed)
-sudo chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}
-
-# Or use a Node version manager like nvm
-```
-
-#### Multiple Installations
-```bash
-# Remove global ani package
-npm uninstall -g ani-code
-
-# Clean reinstall
-npm install -g . --force
-```
-
-
-## Development
-
-### Testing Locally
-```bash
-# Run this in the background during development to automatically apply any changes to the source code
-# macOS/Linux:
-npm start
-
-# Windows:
-npm run start:win
-```
-
-### Available Scripts
-```bash
-npm start         # Run locally (macOS/Linux)
-npm run start:win # Run on Windows
-npm run dev       # Watch mode (Windows only)
-npm run build     # Build TypeScript to dist/
-```
-
-### Project Structure
+## 📁 Project Structure
 
 ```
 ani-code/
 ├── src/
-│   ├── agents/                 # Specialized AI agents
-│   │   ├── backend-developer.ts   # Backend development agent
-│   │   ├── bundle-optimizer.ts    # Bundle optimization agent
-│   │   ├── frontend-developer.ts  # Frontend development agent
-│   │   ├── generate-tests.ts      # Test generation agent
-│   │   ├── react-optimizer.ts     # React optimization agent
-│   │   └── security-auditor.ts    # Security audit agent
-│   ├── commands/           
-│   │   ├── definitions/        # Individual command implementations
-│   │   │   ├── clear.ts        # Clear chat history command
-│   │   │   ├── help.ts         # Help command
-│   │   │   ├── login.ts        # Authentication command
-│   │   │   ├── model.ts        # Model selection command
-│   │   │   ├── reasoning.ts    # Reasoning toggle command
-│   │   │   ├── init.ts         # Initialize project context command
-│   │   │   └── context.ts      # Manage context window size command
-│   │   ├── base.ts             # Base command interface
-│   │   ├── check-security.ts   # Security check CLI command
-│   │   ├── generate-tests.ts   # Test generation CLI command
-│   │   ├── optimize-bundle.ts  # Bundle optimization CLI command
-│   │   └── index.ts            # Command exports
-│   ├── core/               
-│   │   ├── agent.ts            # AI agent implementation
-│   │   ├── cli.ts              # CLI entry point and setup
-│   │   └── test-agent.ts       # Test agent utilities
-│   ├── tools/              
-│   │   ├── tool-schemas.ts     # Tool schema definitions
-│   │   ├── tools.ts            # Tool implementations
-│   │   └── validators.ts       # Input validation utilities
-│   ├── types/
-│   │   └── commands.d.ts       # Command type definitions
-│   ├── ui/                 
-│   │   ├── App.tsx             # Main application component
-│   │   ├── components/     
-│   │   │   ├── core/           # Core chat TUI components
-│   │   │   ├── display/        # Auxiliary components for TUI display
-│   │   │   └── input-overlays/ # Input overlays and modals that occupy the MessageInput box
-│   │   └── hooks/          
-│   └── utils/              
-│       ├── constants.ts        # Application constants
-│       ├── env.ts              # Environment configuration
-│       ├── file-ops.ts         # File system operations
-│       ├── local-settings.ts   # Local configuration management
-│       ├── markdown.ts         # Markdown processing utilities
-│       └── openai-models.ts    # OpenAI model utilities
-├── context/                    # Context engineering files
-│   ├── .context-metadata.json  # Context metadata
-│   ├── AGENT_MEMORY.md         # Agent memory documentation
-│   ├── ARCHITECTURE.md         # Architecture documentation
-│   ├── CONVENTIONS.md          # Coding conventions
-│   ├── DEVELOPMENT.md          # Development guidelines
-│   └── PROJECT.md              # Project overview
-├── test-project/               # Test project for development
-├── package.json    
-├── tsconfig.json        
-└── LICENSE          
+│   ├── agents/          # Specialized AI agents
+│   ├── commands/        # CLI commands
+│   ├── core/           # Application core
+│   ├── knowledge-graph/ # Context system
+│   ├── tools/          # AI tools
+│   ├── ui/             # TUI interface
+│   └── utils/          # Utilities
+├── context/            # Project documentation
+├── docs/               # Technical documentation
+└── package.json        # Configuration
 ```
 
-**TL;DR:** Start with `src/core/cli.ts` (main entry point), `src/core/agent.ts`, and `src/ui/hooks/useAgent.ts` (bridge between TUI and the agent). Tools are in `src/tools/`, slash commands are in `src/commands/definitions/`, and customize the TUI in `src/ui/components/`.
+## 🎯 Use Cases
 
-### Customization
-
-#### Adding New Tools
-
-Tools are AI-callable functions that extend the CLI's capabilities. To add a new tool:
-
-1. **Define the tool schema** in `src/tools/tool-schemas.ts`:
-```typescript
-export const YOUR_TOOL_SCHEMA: ToolSchema = {
-  type: 'function',
-  function: {
-    name: 'your_tool_name',
-    description: 'What your tool does',
-    parameters: {
-      type: 'object',
-      properties: {
-        param1: { type: 'string', description: 'Parameter description' }
-      },
-      required: ['param1']
-    }
-  }
-};
+### **New Project**
+```bash
+mkdir my-project && cd my-project
+ani init
+ani add-playwright
+ani generate-tests --ci --e2e --playwright
+ani migrate-ts
 ```
 
-2. **Implement the tool function** in `src/tools/tools.ts`:
-```typescript
-export async function yourToolName(param1: string): Promise<ToolResult> {
-  // Your implementation here
-  return createToolResponse(true, result, 'Success message');
+### **Existing Project**
+```bash
+# Quick audit
+ani bug-scan
+
+# Add missing tests
+ani generate-tests src/
+
+# TypeScript migration
+ani migrate-ts
+```
+
+### **Daily Development**
+```bash
+ani bg-agent --watch    # Auto monitoring
+ani run-tests          # Quick tests
+ani bug-scan --local   # Pre-commit check
+```
+
+## 🔧 Advanced Configuration
+
+### **Configuration File**
+Create `~/.ani-code-config.json` :
+```json
+{
+  "defaultModel": "anthropic/claude-3.5-sonnet",
+  "temperature": 0.7,
+  "maxTokens": 4000,
+  "debug": false
 }
 ```
 
-3. **Register the tool** in the `TOOL_REGISTRY` object and `executeTool` switch statement in `src/tools/tools.ts`.
+### **Environment Variables**
+```bash
+# API Keys
+export OPENROUTER_API_KEY="sk-..."
+export ANTHROPIC_API_KEY="sk-..."
+export OPENAI_API_KEY="sk-..."
 
-4. **Add the schema** to `ALL_TOOL_SCHEMAS` array in `src/tools/tool-schemas.ts`.
-
-#### Adding New Slash Commands
-
-Slash commands provide direct user interactions. To add a new command:
-
-1. **Create command definition** in `src/commands/definitions/your-command.ts`:
-```typescript
-import { CommandDefinition, CommandContext } from '../base.js';
-
-export const yourCommand: CommandDefinition = {
-  command: 'yourcommand',
-  description: 'What your command does',
-  handler: ({ addMessage }: CommandContext) => {
-    // Your command logic here
-    addMessage({
-      role: 'system',
-      content: 'Command response'
-    });
-  }
-};
+# Configuration
+export ANI_DEBUG=true
+export ANI_MODEL="anthropic/claude-3.5-sonnet"
 ```
 
-2. **Register the command** in `src/commands/index.ts` by importing it and adding to the `availableCommands` array.
+## 📊 Statistics & Monitoring
 
-#### Changing Start Command
-To change the start command from `ani`, modify the `"bin"` section in `package.json` to your preferred global command name.
+- **📈 Test Coverage** : 95% with detailed report
+- **🔒 Security** : Daily automatic scans
+- **⚡ Performance** : Automatic bundle optimization
+- **📊 Monitoring** : Detailed logs in `context/AGENT_MEMORY.md`
 
-Re-run `npm run build` and `npm link` to apply changes.
+## 🤝 Contribution
 
+1. **Fork** the project
+2. **Create** a feature branch
+3. **Test** with `npm test`
+4. **Submit** a Pull Request
 
-## Contributing and Support
+## 📞 Support & Communauté
 
-Improvements through PRs are welcome!
+- **Issues** : [GitHub Issues](https://github.com/hervekom37/Ani_Code/issues)
+- **Discussions** : [GitHub Discussions](https://github.com/hervekom37/Ani_Code/discussions)
+- **Discord** : [Ani Code Community](https://discord.gg/ani-code)
 
-For issues and feature requests, please open an issue on GitHub.
+## 📄 License
 
-### Available Commands
+MIT License - see [LICENSE](LICENSE) for details.
 
-#### Slash Commands
-```
-/help           - Show help and available commands
-/login          - Configure your AI provider (OpenRouter, Anthropic, OpenAI)
-/model          - Select AI model to use
-/clear          - Clear chat history and context
-/reasoning      - Toggle display of reasoning content in messages
-/init           - Generate PROJECT_OUTLINE.md to guide Ani Code
-/context        - Manage context window size
-```
+---
 
-#### CLI Commands (non-interactive)
-```
-ani --command generate-tests --input "<description or path>"    # Generate tests
-ani --command optimize-bundle --input "<description or path>"   # Optimize bundle size
-ani --command check-security --input "<description or path>"    # Security audit
-```
+<div align="center">
 
-#### Built with powerful AI APIs - share what you create!
+**⭐ If this project helps you, don't hesitate to give it a star!**
+
+</div>

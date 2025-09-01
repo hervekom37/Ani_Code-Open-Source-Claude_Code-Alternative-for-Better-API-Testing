@@ -273,7 +273,7 @@ IMPORTANT: Never leave tasks half-completed. If you start creating a blog, creat
 
         if (!response.ok) {
           const errorText = await response.text();
-          throw new Error(`Erreur API OpenRouter: ${response.status} ${response.statusText} - ${errorText}`);
+          throw new Error(`OpenRouter API Error: ${response.status} ${response.statusText} - ${errorText}`);
         }
 
         const data = await response.json() as any;
@@ -331,7 +331,7 @@ IMPORTANT: Never leave tasks half-completed. If you start creating a blog, creat
             });
           }
         } else {
-          // Réponse finale
+          // Final response
           if (this.onFinalMessage) {
             this.onFinalMessage(message.content);
           }

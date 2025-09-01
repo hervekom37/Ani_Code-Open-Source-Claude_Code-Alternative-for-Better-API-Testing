@@ -14,7 +14,7 @@ export class ConfigManager {
     this.loadConfig();
   }
 
-  // Charger la configuration depuis le fichier
+  // Load configuration from file
   private loadConfig(): void {
     if (fs.existsSync(CONFIG_FILE)) {
       this.config = JSON.parse(fs.readFileSync(CONFIG_FILE, 'utf-8'));

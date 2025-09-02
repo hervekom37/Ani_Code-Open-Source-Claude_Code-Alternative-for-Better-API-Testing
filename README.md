@@ -1,20 +1,37 @@
-# 🚀 Ani Code - The Ultimate AI Coding Assistant
+# 🚀 Ani Code – Your Anime-Inspired AI Coding Assistant
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-4.9+-blue.svg)](https://www.typescriptlang.org/)
 [![Node.js](https://img.shields.io/badge/Node.js-16+-green.svg)](https://nodejs.org/)
 [![npm](https://img.shields.io/badge/npm-compatible-red.svg)](https://www.npmjs.com/)
 
-> **The coding assistant that thinks like you** - Ani Code is a comprehensive AI assistant that transforms the way you code with automated testing, security analysis, and intelligent integration.
+> **🌸 Ani Code is your coding Senpai.** - Not just another Copilot – Ani Code is your **anime-coded AI sidekick** that powers up your workflow with **QA testing, security scans, API exploration, and persistent agent memory** – all wrapped in a vibrant, fun interface.
 
-## ✨ Why Ani Code?
+## 🔑 Supported AI Providers
+> **Ani Code works with your favorite AI backends. Plug in your keys and go:**
 
-- **🤖 Smart AI** - Multiple specialized AI agents (Backend, Frontend, Security)
-- **🧪 Automated Tests** - Intelligent test generation and execution
-- **🔒 Integrated Security** - Automatic vulnerability scans
-- **📊 TypeScript Migration** - JS → TS conversion in one click
-- **🎨 Modern Interface** - Elegant and intuitive TUI
-- **🔄 CI/CD Ready** - Full GitHub Actions integration
+- **OpenRouter** - (recommended: access OpenAI, Anthropic, Mistral, Gemini, etc.)
+- **OpenAI** - (GPT-4, GPT-4o, o1-preview…)
+- **Anthropic** - (Claude 3.5 Sonnet, Haiku)
+- **Google Gemini** 
+- **Mistral**
+
+## ✨ What Makes Ani Code Different?
+- **🧪 Enhanced QA Mode** – Auto-generate & run tests (unit, e2e, Playwright, CI/CD ready)
+- **📖 API Skill Tree** – Read & test APIs directly with Apidog MCP Serve
+- **🧠 Agent.md Memory** – Smarter context persistence across your whole codebase
+- **🔒 Code Guardian** – Automatic bug & security scans (local + PR)
+- **🔥 Always YOLO Mode** – Iterate fearlessly, scan, refactor, and ship without friction
+- **🎌 Anime Vibes** – The UI feels less “enterprise” and more like coding with your favorite anime sidekick
+
+## 🎮 Core Vibe
+
+> **Think of Ani Code as your dev Senpai:**
+
+- **Guides you when you’re stuck 🧭**
+- **Powers you up with new abilities ⚡**
+- **Keeps you safe from bugs & vulnerabilities 🛡️**
+- **And always brings anime energy to your workflow 🌸**
 
 ## 🎯 Quick Installation
 

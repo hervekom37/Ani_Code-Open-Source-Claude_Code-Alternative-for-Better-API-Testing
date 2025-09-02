@@ -1,5 +1,9 @@
 # 🚀 Ani Code – Your Anime-Inspired AI Coding Assistant
 
+
+https://github.com/user-attachments/assets/fba50c1d-2c32-4ef9-96eb-6ea360da9954
+
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-4.9+-blue.svg)](https://www.typescriptlang.org/)
 [![Node.js](https://img.shields.io/badge/Node.js-16+-green.svg)](https://nodejs.org/)

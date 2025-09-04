@@ -143,6 +143,82 @@ ani generate-tests --ci --e2e --playwright
 ani migrate-ts
 ```
 
+## 💡 Testing Tips & Best Practices
+
+### 🎯 Quick Start Testing
+```bash
+# 30-second complete testing setup
+ani init
+ani generate-tests --ci --e2e --playwright
+ani bug-scan --local
+ani run-tests
+```
+
+### 🎮 CLI vs TUI Usage
+- **CLI**: `ani generate-tests --ci --e2e --playwright`
+- **TUI**: `ani` → `/generate-tests` → select options interactively
+
+### 🔧 Essential Testing Commands Reference
+| Command Type | CLI Command | TUI Slash Command |
+|--------------|-------------|-------------------|
+| **Full Setup** | `ani generate-tests --ci --e2e --playwright` | `/generate-tests` |
+| **Security Scan** | `ani bug-scan --local` | `/bug-scan --local` |
+| **Run Tests** | `ani run-tests` | `/run-tests` |
+| **Background Agent** | `ani bg-agent --watch` | `/bg-agent --watch` |
+| **Playwright Setup** | `ani add-playwright` | `/add-playwright` |
+
+### 📋 Testing Workflow Examples
+
+#### **For New Projects**
+```bash
+mkdir my-app && cd my-app
+ani init
+ani generate-tests --ci --e2e --playwright  # Complete testing suite
+ani bug-scan --local                          # Security check
+ani run-tests                                 # Execute all tests
+ani bg-agent --watch &                        # Continuous monitoring
+```
+
+#### **For Existing Projects**
+```bash
+ani bug-scan --local      # Identify issues
+ani generate-tests src/   # Add missing tests
+ani run-tests             # Validate current state
+ani migrate-ts             # TypeScript migration if needed
+```
+
+#### **Daily Development**
+```bash
+ani run-tests --watch     # Auto-run tests on changes
+ani bug-scan --pr         # Pre-commit security check
+ani bg-agent --watch      # Background test generation
+```
+
+### 📊 Testing Features Overview
+- **Unit Tests**: Jest with coverage reporting
+- **E2E Tests**: Playwright with visual testing
+- **Security**: Automated vulnerability scanning
+- **CI/CD**: GitHub Actions workflow generation
+- **Performance**: Load testing capabilities
+- **Monitoring**: Real-time test generation
+
+### 📖 Complete Testing Guide
+For detailed testing scenarios and examples, see: [TEST_SCENARIO.md](./TEST_SCENARIO.md)
+
+### ⚡ Quick Testing Tips
+1. **Always run security scans**: `ani bug-scan --local` before commits
+2. **Use watch mode**: `ani bg-agent --watch` for continuous testing
+3. **Generate tests early**: Use `ani generate-tests` at project start
+4. **Check coverage**: Tests generate 95%+ coverage reports automatically
+5. **CI/CD ready**: All tests integrate with GitHub Actions
+
+### 🎯 Testing Best Practices
+- **Test pyramid**: Unit → Integration → E2E tests
+- **Security first**: Regular vulnerability scanning
+- **Continuous testing**: Background agent for real-time updates
+- **Type safety**: TypeScript migration with full test coverage
+- **Documentation**: Auto-generated test reports in `context/`
+
 ## 🔄 CI/CD Integration
 
 The system automatically generates:

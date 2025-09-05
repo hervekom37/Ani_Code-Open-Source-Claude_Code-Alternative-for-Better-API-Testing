@@ -9,7 +9,7 @@ https://github.com/user-attachments/assets/fba50c1d-2c32-4ef9-96eb-6ea360da9954
 [![Node.js](https://img.shields.io/badge/Node.js-16+-green.svg)](https://nodejs.org/)
 [![npm](https://img.shields.io/badge/npm-compatible-red.svg)](https://www.npmjs.com/)
 
-> **🌸 Ani Code is your coding Senpai.** - Not just another Copilot – Ani Code is your **anime-coded AI sidekick** that powers up your workflow with **QA testing, security scans, API exploration, and persistent agent memory** – all wrapped in a vibrant, fun interface.
+> **🌸 Ani Code is your coding Senpai.** - Not just another copilot – Ani Code is the open-source **Claude Code alternative for Better API Testing**, your anime-coded AI sidekick that powers up your workflow with **QA testing, security scans, API exploration, and persistent agent memory** – all wrapped in a vibrant, fun interface.
 
 ## 🔑 Supported AI Providers
 > **Ani Code works with your favorite AI backends. Plug in your keys and go:**

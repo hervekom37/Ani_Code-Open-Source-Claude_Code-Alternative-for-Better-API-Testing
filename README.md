@@ -1,4 +1,4 @@
-# 🚀 Ani Code – Your Anime-Inspired AI Coding Assistant
+# 🚀 Ani Code – Open Source Claude Code Alternative for Better API Testing
 
 
 https://github.com/user-attachments/assets/fba50c1d-2c32-4ef9-96eb-6ea360da9954
